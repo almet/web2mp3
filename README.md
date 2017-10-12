@@ -8,6 +8,7 @@ This is a tiny web extension which does two things:
 - It allows you to convert your shazam tags into mp3 files;
 - It allows you to download any Youtube page as an mp3 file.
 
+<img src="/web2mp3.gif?raw=true"/>
 
 ## Requirements
 
