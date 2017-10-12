@@ -19,9 +19,12 @@ apt install youtube-dl python3
 mkdir ~/.apps && mkdir ~/.mozilla/native-messaging-hosts/
 wget https://raw.githubusercontent.com/almet/shazam2mp3/master/app.py -O ~/.apps/app.py
 wget https://raw.githubusercontent.com/almet/shazam2mp3/master/shazam2mp3.json -O ~/.mozilla/native-messaging-hosts/shazam2mp3.json
+chmod +x ~/.apps/app.py
+chmod +x ~/.mozilla/native-messaging-hosts/shazam2mp3.json
+sed -i "s:/home/alexis/dev/shazam2mp3:`echo ~/.apps`:g" shazam2mp3.json
 ```
 
-Of course, update your paths!
+Of course, you can install in a different location, just think about updating your paths!
 
 Once this is done, head to [the shazam website](https://www.shazam.com/myshazam)
 listing your shazams and click on the icon next to the URL. Your shazam tags will
