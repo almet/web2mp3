@@ -11,9 +11,7 @@ This is a tiny web extension which does two things:
 
 ## Requirements
 
-First, [install the extension](https://addons.mozilla.org/en-US/firefox/addon/web2mp3/).
-
-Then, this extension requires some steps before working properly.
+First, this extension requires some steps before working properly.
 
 It requires that you install the python application locally, and that
 you install the `youtube-dl` package.
@@ -31,6 +29,9 @@ chmod +x ~/.apps/web2mp3.py
 chmod +x ~/.mozilla/native-messaging-hosts/web2mp3.json
 sed -i "s:/home/alexis/.apps:`echo ~/.apps`:g" ~/.mozilla/native-messaging-hosts/web2mp3.json
 ```
+
+Then, [install the extension](https://addons.mozilla.org/en-US/firefox/addon/web2mp3/).
+
 
 Of course, you can install in a different location, just think about updating your paths!
 
