@@ -8,9 +8,12 @@ This is a tiny web extension which does two things:
 - It allows you to convert your shazam tags into mp3 files;
 - It allows you to download any Youtube page as an mp3 file.
 
-## Requirements on the machine
 
-This extension requires some steps before working properly.
+## Requirements
+
+First, [install the extension](https://addons.mozilla.org/en-US/firefox/addon/web2mp3/).
+
+Then, this extension requires some steps before working properly.
 
 It requires that you install the python application locally, and that
 you install the `youtube-dl` package.
@@ -31,15 +34,9 @@ sed -i "s:/home/alexis/.apps:`echo ~/.apps`:g" ~/.mozilla/native-messaging-hosts
 
 Of course, you can install in a different location, just think about updating your paths!
 
-## Installation of the .xpi
+Then, head to any youtube page, or to [your shazams](https://www.shazam.com/myshazam)
+and click on the icon next to the URL. Your shazam tags will be automatically
+downloaded and available in `~/web2mp3`.
 
-You also (of course!) need to install the extension locally. First, [download
-it](https://github.com/almet/web2mp3/blob/master/dist/shazam_to_mp3-1.0-an+fx.xpi?raw=true)
-and then head to `about:addons` and select "install add-on from file".
-
-Once this is done, head to [the shazam
-website](https://www.shazam.com/myshazam) listing your shazams and click on the
-icon next to the URL. Your shazam tags will be automatically downloaded and
-available in `~/shazam`. This will also work on any youtube page.
 
 Enjoy ;)
