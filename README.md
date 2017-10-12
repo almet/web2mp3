@@ -14,10 +14,12 @@ You will also need to add the native messaging app to the known ones.
 
 On any linux machine, all of this can be accomplished with the following commands:
 
-> apt install youtube-dl python3
-> mkdir ~/.apps && mkdir ~/.mozilla/native-messaging-hosts/
-> wget https://raw.githubusercontent.com/almet/shazam2mp3/master/app.py -O ~/.apps/app.py
-> wget https://raw.githubusercontent.com/almet/shazam2mp3/master/shazam2mp3.json -O ~/.mozilla/native-messaging-hosts/shazam2mp3.json
+```bash
+apt install youtube-dl python3
+mkdir ~/.apps && mkdir ~/.mozilla/native-messaging-hosts/
+wget https://raw.githubusercontent.com/almet/shazam2mp3/master/app.py -O ~/.apps/app.py
+wget https://raw.githubusercontent.com/almet/shazam2mp3/master/shazam2mp3.json -O ~/.mozilla/native-messaging-hosts/shazam2mp3.json
+```
 
 Of course, update your paths!
 
