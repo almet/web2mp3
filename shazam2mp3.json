@@ -1,7 +1,0 @@
-{
-  "name": "shazam2mp3",
-  "description": "Convert shazam tags to mp3 files",
-  "path": "/home/alexis/.apps/app.py",
-  "type": "stdio",
-  "allowed_extensions": [ "shazam2mp3@notmyidea.org" ]
-}

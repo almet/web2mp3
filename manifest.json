@@ -1,13 +1,13 @@
 {
 
-  "description": "Convert your shazam playlists into .mp3, locally.",
+  "description": "Convert web pages to .mp3 files, locally.",
   "manifest_version": 2,
-  "name": "Shazam to mp3",
+  "name": "Web2mp3",
   "version": "1.1",
 
   "applications": {
     "gecko": {
-      "id": "shazam2mp3@notmyidea.org",
+      "id": "web2mp3@notmyidea.org",
       "strict_min_version": "50.0"
     }
   },
@@ -22,12 +22,12 @@
       "19": "icon.svg",
       "38": "icon.svg"
     },
-    "default_title": "Convert shazams to mp3"
+    "default_title": "Convert to mp3"
   },
   "content_scripts": [
         {
           "matches": ["https://www.shazam.com/*"],
-          "js": ["./content-script.js"]
+          "js": ["./shazam.js"]
         }
     ],
 

@@ -1,4 +1,4 @@
-# Convert shazam tags to mp3 files
+# Convert web pages to mp3 files
 
 *Disclaimer: this has been done for my own use, feel free to use it and submit
 changes, but I probably won't spend a lot of time maintaining it.*
@@ -22,11 +22,11 @@ On any linux machine, all of this can be accomplished with the following command
 ```bash
 apt install youtube-dl python3
 mkdir ~/.apps && mkdir ~/.mozilla/native-messaging-hosts/
-wget https://raw.githubusercontent.com/almet/shazam2mp3/master/app.py -O ~/.apps/app.py
-wget https://raw.githubusercontent.com/almet/shazam2mp3/master/shazam2mp3.json -O ~/.mozilla/native-messaging-hosts/shazam2mp3.json
-chmod +x ~/.apps/app.py
-chmod +x ~/.mozilla/native-messaging-hosts/shazam2mp3.json
-sed -i "s:/home/alexis/dev/shazam2mp3:`echo ~/.apps`:g" shazam2mp3.json
+wget https://raw.githubusercontent.com/almet/web2mp3/master/web2mp3.py -O ~/.apps/web2mp3.py
+wget https://raw.githubusercontent.com/almet/web2mp3/master/web2mp3.json -O ~/.mozilla/native-messaging-hosts/web2mp3.json
+chmod +x ~/.apps/web2mp3.py
+chmod +x ~/.mozilla/native-messaging-hosts/web2mp3.json
+sed -i "s:/home/alexis/.apps/web2mp3:`echo ~/.apps`:g" web2mp3.json
 ```
 
 Of course, you can install in a different location, just think about updating your paths!
@@ -34,7 +34,7 @@ Of course, you can install in a different location, just think about updating yo
 ## Installation of the .xpi
 
 You also (of course!) need to install the extension locally. First, [download
-it](https://github.com/almet/shazam2mp3/blob/master/dist/shazam_to_mp3-1.0-an+fx.xpi?raw=true)
+it](https://github.com/almet/web2mp3/blob/master/dist/shazam_to_mp3-1.0-an+fx.xpi?raw=true)
 and then head to `about:addons` and select "install add-on from file".
 
 Once this is done, head to [the shazam

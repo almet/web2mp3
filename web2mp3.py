@@ -6,7 +6,8 @@ import json
 import struct
 import subprocess
 
-CACHE_LOCATION = os.path.expanduser('~/shazams/.cache')
+FILES_LOCATION = os.path.expanduser('~/web2mp3/.cache')
+CACHE_LOCATION = os.path.join(FILES_LOCATION, '.cache')
 ACTIONS = {
     'download-youtube-ids': lambda m: download_youtube_ids(m['ids']),
 }
@@ -54,7 +55,7 @@ def save_cache(cache):
 
 def download_youtube_song(id_):
     url = '"https://www.youtube.com/watch?v=%s"' % id_
-    command = 'youtube-dl {0} -x --audio-format mp3 -o "~/shazams/%(title)s.%(ext)s"'.format(url)
+    command = 'youtube-dl {0} -x --audio-format mp3 -o "{1}/%(title)s.%(ext)s"'.format(url, FILES_LOCATION)
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     exit_status = process.wait()
     if exit_status != 0:
@@ -65,7 +66,7 @@ def download_youtube_ids(ids):
     cache = load_cache()
     filtered_ids = [id_ for id_ in ids if id_ not in cache]
     if len(filtered_ids) == 0:
-        send_message({"type": "status", "status": "No songs to download."})
+        send_message({"type": "status", "status": "Nothing to download!"})
     else:
         send_message({"type": "status", "status": "Downloading %s songs" % len(filtered_ids)})
 
@@ -76,8 +77,8 @@ def download_youtube_ids(ids):
             cache.append(id_)
             save_cache(cache)
         except:
-            send_message({"type": "status", "status": "There were an error during the download of your shazam, check the console for more information."})
-    send_message({"type": "status", "status": "Your shazam songs have been downloaded and are available in ~/shazams. Enjoy!"})
+            send_message({"type": "status", "status": "There were an error during the download of your music, check the console for more information."})
+    send_message({"type": "status", "status": "Your songs have been downloaded and are available in {0}. Enjoy!".format(FILES_LOCATION)})
 
 
 while True:

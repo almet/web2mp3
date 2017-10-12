@@ -1,0 +1,7 @@
+{
+  "name": "web2mp3",
+  "description": "Convert web pages to mp3 files",
+  "path": "/home/alexis/.apps/web2mp3.py",
+  "type": "stdio",
+  "allowed_extensions": [ "web2mp3@notmyidea.org" ]
+}

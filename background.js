@@ -1,9 +1,9 @@
-var port = browser.runtime.connectNative("shazam2mp3");
+var port = browser.runtime.connectNative("web2mp3");
 
 port.onMessage.addListener((message) => {
     if (message.type == 'status') {
         browser.notifications.create({
-            "title": "Shazam to mp3",
+            "title": "Web to mp3",
             "type": "basic",
             "message": message.status
         });
