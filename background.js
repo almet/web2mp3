@@ -11,8 +11,20 @@ port.onMessage.addListener((message) => {
 });
 
 browser.pageAction.onClicked.addListener((tab) => {
-    console.log("page action clicked, triggering content-script.");
-    browser.tabs.sendMessage(tab.id, {'action': 'convert-tags-to-mp3'});
+    // Depending on the tab URL, we'll do a different action.
+    if (tab.url.startsWith('https://www.youtube.com/watch')) {
+        // If we are on youtube, we just want to download the current song.
+        console.log(tab.url);
+        var id_ = tab.url.split('?v=')[1]
+        port.postMessage({
+            type: 'download-youtube-ids',
+            ids: [id_]
+        });
+    } else if (tab.url.startsWith('https://www.shazam.com/myshazam')) {
+        // If we are on shazam, then we want to retrieve all the names and convert
+        // them to youtube ids.
+        browser.tabs.sendMessage(tab.id, {'action': 'convert-tags-to-mp3'});
+    }
 });
 
 browser.runtime.onMessage.addListener(payload => {
@@ -27,8 +39,8 @@ browser.runtime.onMessage.addListener(payload => {
 });
 
 browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    console.log(tabId, changeInfo, tab);
-    if (tab.url.indexOf('https://www.shazam.com/myshazam') == 0) {
+    if (tab.url.startsWith('https://www.shazam.com/myshazam')
+        || tab.url.startsWith('https://www.youtube.com/watch')) {
         browser.pageAction.show(tabId);
     }
 })
