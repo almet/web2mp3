@@ -6,6 +6,11 @@ import struct
 import subprocess
 
 
+ACTIONS = {
+    'download-youtube-ids': lambda m: download_youtube_ids(m['ids']),
+}
+
+
 def get_message():
     """Read a message from stdin and decode it."""
     rawLength = sys.stdin.buffer.read(4)
@@ -31,13 +36,17 @@ def send_message(message):
     sys.stdout.buffer.flush()
 
 
+def download_youtube_ids(ids):
+    formated_ids = ' '.join(['"https://www.youtube.com/watch?v=%s"' % id_ for id_ in ids])
+    command = 'youtube-dl {0} -x --audio-format mp3 -o "~/shazams/%(title)s.%(ext)s"'.format(formated_ids)
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    send_message({"type": "status", "status": "Downloading %s songs" % len(message['ids'])})
+    process.wait()
+    send_message({"type": "status", "status": "Your shazam songs have been downloaded and are available in ~/shazams. Enjoy!"})
+
+
 while True:
     message = get_message()
-    if message.get('type') == 'download-youtube-ids':
-
-        ids = ' '.join(['"https://www.youtube.com/watch?v=%s"' % id_ for id_ in message['ids']])
-        command = 'youtube-dl {0} -x --audio-format mp3 -o "~/shazams/%(title)s.%(ext)s"'.format(ids)
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-        send_message({"type": "status", "status": "Downloading %s songs" % len(message['ids'])})
-        process.wait()
-        send_message({"type": "status", "status": "Your shazam songs have been downloaded and are available in ~/shazams. Enjoy!"})
+    message_type = message.get('type')
+    if message_type in ACTIONS:
+        ACTIONS[message_type](message)
