@@ -3,7 +3,7 @@
   "description": "Convert your shazam playlists into .mp3, locally.",
   "manifest_version": 2,
   "name": "Shazam to mp3",
-  "version": "1.0",
+  "version": "1.1",
 
   "applications": {
     "gecko": {
