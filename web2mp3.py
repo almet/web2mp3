@@ -6,7 +6,7 @@ import json
 import struct
 import subprocess
 
-FILES_LOCATION = os.path.expanduser('~/web2mp3/.cache')
+FILES_LOCATION = os.path.expanduser('~/web2mp3')
 CACHE_LOCATION = os.path.join(FILES_LOCATION, '.cache')
 ACTIONS = {
     'download-youtube-ids': lambda m: download_youtube_ids(m['ids']),
