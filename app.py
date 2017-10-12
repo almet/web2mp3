@@ -46,29 +46,38 @@ def load_cache():
         return []
 
 
-def save_cache(ids):
+def save_cache(cache):
     """Save downloaded ids in the cache"""
     with open(CACHE_LOCATION, 'w+') as f:
-        json.dump(ids, f)
+        json.dump(cache, f)
+
+
+def download_youtube_song(id_):
+    url = '"https://www.youtube.com/watch?v=%s"' % id_
+    command = 'youtube-dl {0} -x --audio-format mp3 -o "~/shazams/%(title)s.%(ext)s"'.format(url)
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    exit_status = process.wait()
+    if exit_status != 0:
+        raise Exception()
 
 
 def download_youtube_ids(ids):
-    cached_ids = load_cache()
-    urls = ['"https://www.youtube.com/watch?v=%s"' % id_ for id_ in ids if id_ not in cached_ids]
-    formated_ids = ' '.join(urls)
-    command = 'youtube-dl {0} -x --audio-format mp3 -o "~/shazams/%(title)s.%(ext)s"'.format(formated_ids)
-
-    if len(urls) == 0:
+    cache = load_cache()
+    filtered_ids = [id_ for id_ in ids if id_ not in cache]
+    if len(filtered_ids) == 0:
         send_message({"type": "status", "status": "No songs to download."})
     else:
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-        send_message({"type": "status", "status": "Downloading %s songs" % len(urls)})
-        exit_status = process.wait()
-        if exit_status == 0:
-            send_message({"type": "status", "status": "Your shazam songs have been downloaded and are available in ~/shazams. Enjoy!"})
-            save_cache(list(set(cached_ids + ids)))
-        else:
+        send_message({"type": "status", "status": "Downloading %s songs" % len(filtered_ids)})
+
+    for i, id_ in enumerate(filtered_ids):
+        try:
+            send_message({"type": "progression", 'progression': i})
+            download_youtube_song(id_)
+            cache.append(id_)
+            save_cache(cache)
+        except:
             send_message({"type": "status", "status": "There were an error during the download of your shazam, check the console for more information."})
+    send_message({"type": "status", "status": "Your shazam songs have been downloaded and are available in ~/shazams. Enjoy!"})
 
 
 while True:
