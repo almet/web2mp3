@@ -26,7 +26,7 @@ wget https://raw.githubusercontent.com/almet/web2mp3/master/web2mp3.py -O ~/.app
 wget https://raw.githubusercontent.com/almet/web2mp3/master/web2mp3.json -O ~/.mozilla/native-messaging-hosts/web2mp3.json
 chmod +x ~/.apps/web2mp3.py
 chmod +x ~/.mozilla/native-messaging-hosts/web2mp3.json
-sed -i "s:/home/alexis/.apps/web2mp3:`echo ~/.apps`:g" web2mp3.json
+sed -i "s:/home/alexis/.apps:`echo ~/.apps`:g" ~/.mozilla/native-messaging-hosts/web2mp3.json
 ```
 
 Of course, you can install in a different location, just think about updating your paths!
