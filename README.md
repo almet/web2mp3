@@ -5,8 +5,8 @@ changes, but I probably won't spend a lot of time maintaining it.*
 
 This is a tiny web extension which does two things:
 
-- It allows you to convert your shazam tags into mp3 files;
-- It allows you to download any Youtube page as an mp3 file.
+- convert your shazam tags into mp3 files;
+- download any Youtube page as an mp3 file.
 
 <img src="/web2mp3.gif?raw=true"/>
 
@@ -33,12 +33,26 @@ sed -i "s:/home/alexis/.apps:`echo ~/.apps`:g" ~/.mozilla/native-messaging-hosts
 
 Then, [install the extension](https://addons.mozilla.org/en-US/firefox/addon/web2mp3/).
 
-
 Of course, you can install in a different location, just think about updating your paths!
 
 Then, head to any youtube page, or to [your shazams](https://www.shazam.com/myshazam)
 and click on the icon next to the URL. Your shazam tags will be automatically
 downloaded and available in `~/web2mp3`.
 
-
 Enjoy ;)
+
+## Using yt-dlp
+
+Youtube-dl has been forked to [yt-dlp](https://github.com/yt-dlp/yt-dlp), and
+you can use this instead. The `web2mp3.py` script is looking for a `youtube-dl`,
+so you might need to create a symlink to make this work.
+
+For instance, you could install yt-dlp with [pipx](https://pypa.github.io/pipx/):
+
+```bash
+# Install using pipx
+pipx install yt-dlp
+
+# Create a symlink in /usr/local/bin
+sudo ln -s `which yt-dlp` /usr/local/bin/youtube-dl
+```
