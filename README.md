@@ -24,7 +24,7 @@ You will also need to add the native messaging app to the known ones.
 On any linux machine, all of this can be accomplished with the following commands:
 
 ```bash
-apt install youtube-dl python3
+apt install python3
 mkdir ~/.apps && mkdir ~/.mozilla/native-messaging-hosts/
 wget https://raw.githubusercontent.com/almet/web2mp3/master/web2mp3.py -O ~/.apps/web2mp3.py
 wget https://raw.githubusercontent.com/almet/web2mp3/master/web2mp3.json -O ~/.mozilla/native-messaging-hosts/web2mp3.json
