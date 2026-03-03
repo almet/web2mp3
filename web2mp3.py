@@ -55,7 +55,7 @@ def save_cache(cache):
 
 def download_youtube_song(id_):
     url = '"https://www.youtube.com/watch?v=%s"' % id_
-    command = 'youtube-dl {0} -x --audio-format mp3 -o "{1}/%(title)s.%(ext)s"'.format(url, FILES_LOCATION)
+    command = 'uvx yt-dlp {0} -x --audio-format mp3 -o "{1}/%(title)s.%(ext)s"'.format(url, FILES_LOCATION)
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     exit_status = process.wait()
     if exit_status != 0:

@@ -1,5 +1,7 @@
 # Convert web pages to mp3 files
 
+Last update: 2026-03-03
+
 *Disclaimer: this has been done for my own use, feel free to use it and submit
 changes, but I probably won't spend a lot of time maintaining it.*
 
@@ -41,18 +43,14 @@ downloaded and available in `~/web2mp3`.
 
 Enjoy ;)
 
-## Using yt-dlp
+## Requirements
 
-Youtube-dl has been forked to [yt-dlp](https://github.com/yt-dlp/yt-dlp), and
-you can use this instead. The `web2mp3.py` script is looking for a `youtube-dl`,
-so you might need to create a symlink to make this work.
+This requires [uv](https://docs.astral.sh/uv/getting-started/installation/) to
+be installed on your system, in order to keep
+[yt-dlp](https://github.com/yt-dlp/yt-dlp) always up to date.
 
-For instance, you could install yt-dlp with [pipx](https://pypa.github.io/pipx/):
+Install it with:
 
-```bash
-# Install using pipx
-pipx install yt-dlp
-
-# Create a symlink in /usr/local/bin
-sudo ln -s `which yt-dlp` /usr/local/bin/youtube-dl
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
